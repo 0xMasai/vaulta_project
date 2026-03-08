@@ -1,140 +1,109 @@
-Vaulta — Automated Risk-Aware DeFi Savings Vault
 
-Vaulta is an automated DeFi savings vault that monitors risk conditions and triggers onchain protection to keep users’ funds safe. Using Chainlink CRE and price feeds, Vaulta continuously evaluates stablecoin markets and reacts automatically to protect deposits.
+---
 
-Table of Contents
+# Vaulta — Automated Risk-Aware DeFi Savings Vault
 
-Overview
+**Vaulta** is an automated DeFi savings vault that monitors stablecoin risks and protects user funds. Using **Chainlink CRE**, it automatically pauses the vault if risky conditions occur.
 
-Problem
+---
 
-Solution
+## Problem
 
-Features
+DeFi users face risks they can’t monitor 24/7:
 
-Architecture
+* Stablecoin depegs
+* Liquidity shocks
+* Rapid market volatility
 
-Demo
+---
 
-Technology Stack
+## Solution
 
-Setup & Usage
+Vaulta solves this by:
 
-Contributing
+* Accepting **USDC deposits**
+* **Monitoring price feeds** continuously via Chainlink CRE
+* **Pausing the vault automatically** if risks are detected
 
-License
+---
 
-Overview
+## Impact
 
-Vaulta allows users to deposit USDC into a secure DeFi vault.
-It continuously monitors risk conditions using Chainlink CRE workflows and oracle data. If risk thresholds are breached (e.g., stablecoin price < 0.97), Vaulta automatically pauses the vault to protect user funds.
+* Makes DeFi savings safer
+* Protects users without manual monitoring
+* Enables participation in DeFi for all
 
-Problem
+---
 
-DeFi users face hidden risks when depositing assets:
+## How It Works
 
-Stablecoin depegs
+1. User deposits USDC into the Vaulta vault
+2. CRE monitors price feeds continuously
+3. Automation executor triggers vault pause if thresholds are breached
 
-Liquidity shocks
+**Architecture:**
 
-Rapid market volatility
+```text
+User → Vaulta Frontend → Vault Contract → CRE Workflow → Automation → Vault Paused
+```
 
-Most users cannot monitor these conditions 24/7, exposing them to potential losses.
+---
 
-Solution
+## Demo
 
-Vaulta addresses these problems by:
+* Connect wallet
+* Deposit USDC
+* Dashboard shows vault balance & monitoring
+* Vault pauses automatically if risk occurs
 
-Providing an automated DeFi savings vault
+---
 
-Continuously monitoring stablecoin prices via Chainlink CRE
+## Tech Stack
 
-Triggering automated onchain protection when risk occurs
+* Solidity smart contracts
+* Chainlink CRE + Price Feeds
+* Next.js + React frontend
+* viem + Coinbase OnchainKit wallet
+* Base Sepolia testnet
 
-This transforms passive yield into a self-protecting financial system.
+---
 
-Features
+## Usage Guidelines
 
-Deposit and withdraw USDC safely
+1. Clone the repo:
 
-Continuous risk monitoring via Chainlink CRE
-
-Automated vault pause on risky conditions
-
-Dashboard showing vault status and monitoring
-
-Ready for integration with DeFi protocols (Aave, Compound)
-
-Architecture
-User
- ↓
-Vaulta Frontend (Next.js)
- ↓
-Savings Vault Smart Contract
- ↓
-Chainlink CRE Workflow
- ↓
-Automation Executor
- ↓
-Vault Paused (if risk detected)
-
-Frontend: User interface to deposit, monitor, and withdraw funds
-
-Smart Contract: Manages deposits, withdrawals, and vault state
-
-CRE Monitoring: Monitors oracle price feeds continuously
-
-Automation Executor: Pauses vault automatically during risk events
-
-Demo
-
-Connect wallet (Coinbase OnchainKit)
-
-Deposit USDC
-
-Dashboard displays vault balance and monitoring status
-
-CRE monitors stablecoin price
-
-Vault pauses automatically if risk occurs
-
-Visual demo available in the screenshots/ folder or link to live demo.
-
-Technology Stack
-
-Smart Contracts: Solidity
-
-Automation & Monitoring: Chainlink CRE
-
-Oracle Data: Chainlink Price Feeds
-
-Frontend: Next.js + React
-
-Web3 Integration: viem + Coinbase OnchainKit Wallet
-
-AI Assistant: Optional Groq API integration
-
-Testnet: Base Sepolia
-
-Setup & Usage
-
-Clone the repo:
-
+```bash
 git clone https://github.com/<username>/vaulta.git
 cd vaulta
+```
 
-Install frontend dependencies:
+2. Install dependencies:
 
-cd frontend
+```bash
 npm install
+```
 
-Deploy smart contracts on Base Sepolia:
+3. Deploy contracts (Hardhat) to Base Sepolia:
 
+```bash
 cd contracts
-# Compile & deploy using Hardhat or Foundry
+# Compile & deploy
+```
 
-Start frontend:
+4. Start:
 
+```bash
 npm run dev
+```
 
-Connect wallet and interact with the vault.
+5. Connect wallet, deposit USDC, and watch Vaulta monitor risk automatically.
+
+
+---
+
+## License
+
+MIT © Masai
+
+---
+
