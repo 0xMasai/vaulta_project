@@ -1,0 +1,6 @@
+{
+  "schedule": "*/1 * * * *",
+  "rpcUrl": "https://sepolia.base.org",
+  "usdcUsdFeed": "0xd30e2101a97dcbAeBCBC04F14C3f624E67A35165",
+  "automationExecutor": "0x0000000000000000000000000000000000000000"
+}

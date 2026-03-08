@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-672d0dc73a82a235b83fd92cb746e24c5095add3",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/AutomationExecutor.sol": "project/contracts/AutomationExecutor.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/AutomationExecutor.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ninterface ISavingsVault {\r\n    function pause() external;\r\n    function unpause() external;\r\n    function paused() external view returns (bool);\r\n}\r\n\r\ninterface IPriceFeed {\r\n    function latestRoundData()\r\n        external\r\n        view\r\n        returns (\r\n            uint80,\r\n            int256 answer,\r\n            uint256,\r\n            uint256 updatedAt,\r\n            uint80\r\n        );\r\n}\r\n\r\ncontract AutomationExecutor {\r\n    /*//////////////////////////////////////////////////////////////\r\n                                EVENTS\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    event VaultPaused(uint256 price);\r\n    event VaultUnpaused(uint256 price);\r\n\r\n    /*//////////////////////////////////////////////////////////////\r\n                                STORAGE\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    ISavingsVault public immutable vault;\r\n    IPriceFeed public immutable priceFeed;\r\n\r\n    uint256 public immutable pausePrice;    // e.g., 0.985 * 1e8\r\n    uint256 public immutable unpausePrice;  // e.g., 0.997 * 1e8\r\n\r\n    /*//////////////////////////////////////////////////////////////\r\n                                CONSTRUCTOR\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    constructor(\r\n        address _vault,\r\n        address _priceFeed,\r\n        uint256 _pausePrice,\r\n        uint256 _unpausePrice\r\n    ) {\r\n        require(_vault != address(0), \"Invalid vault\");\r\n        require(_priceFeed != address(0), \"Invalid price feed\");\r\n\r\n        vault = ISavingsVault(_vault);\r\n        priceFeed = IPriceFeed(_priceFeed);\r\n        pausePrice = _pausePrice;\r\n        unpausePrice = _unpausePrice;\r\n    }\r\n\r\n    /*//////////////////////////////////////////////////////////////\r\n                        CHAINLINK AUTOMATION FUNCTIONS\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    /// Called by Chainlink Automation registry to check if upkeep is needed\r\n    function checkUpkeep(bytes calldata)\r\n        external\r\n        view\r\n        returns (bool upkeepNeeded, bytes memory)\r\n    {\r\n        (, int256 price,,,) = priceFeed.latestRoundData();\r\n        if (price <= 0) return (false, \"\");\r\n\r\n        uint256 p = uint256(price);\r\n        bool isPaused = vault.paused();\r\n\r\n        if (!isPaused && p < pausePrice) {\r\n            return (true, \"\");\r\n        }\r\n\r\n        if (isPaused && p > unpausePrice) {\r\n            return (true, \"\");\r\n        }\r\n\r\n        return (false, \"\");\r\n    }\r\n\r\n    /// Called by Chainlink Automation registry to perform the action\r\n    function performUpkeep(bytes calldata) external {\r\n        (, int256 price,,,) = priceFeed.latestRoundData();\r\n        require(price > 0, \"Invalid price\");\r\n\r\n        uint256 p = uint256(price);\r\n        bool isPaused = vault.paused();\r\n\r\n        if (!isPaused && p < pausePrice) {\r\n            vault.pause();\r\n            emit VaultPaused(p);\r\n\r\n        } else if (isPaused && p > unpausePrice) {\r\n            vault.unpause();\r\n            emit VaultUnpaused(p);\r\n        }\r\n    }\r\n}"
+      }
+    }
+  }
+}

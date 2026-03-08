@@ -1,0 +1,6 @@
+{
+  "SavingsVaultModule#MockUSDC": "0x6a3619AD230bAC99fabdD0EA06eCbfedC888b4bc",
+  "SavingsVaultModule#MockAavePool": "0xB3B429E9E4ea58Cc024860C21376A36932311CDb",
+  "SavingsVaultModule#SavingsVault": "0x1A260fdcdf097f7e8730c1EE6E9C73fFcbA6a58A",
+  "SavingsVaultModule#AutomationExecutor": "0x700745Da8744c444EA0a7F79C1cA7F4bB2E6B825"
+}
