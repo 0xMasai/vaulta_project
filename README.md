@@ -51,13 +51,73 @@ User → Vaulta Frontend → Vault Contract → CRE Workflow → Automation → 
 
 ## Demo
 
-* Connect wallet
-* Deposit USDC
-* Dashboard shows vault balance & monitoring
-* Vault pauses automatically if risk occurs
+### Connect Wallet
+User connects their wallet using **Coinbase OnchainKit**.
+
+### Deposit USDC
+User deposits USDC into the **Vaulta savings vault**.
+
+### Vault Monitoring
+The dashboard displays:
+- User vault balance
+- Earned yield
+- Risk monitoring status via **Chainlink Price Feeds**
+
+### Automated Protection
+- If the stablecoin price drops below the safety threshold, the vault **automatically pauses** using **Chainlink Automation**.
+- If the market returns to safe levels, the vault **automatically unpauses**.
+
+### Withdraw Funds
+User withdraws their **USDC along with accumulated yield**.
+
+### Healthy System State
+When price conditions remain stable, the dashboard shows:
+
+> **“All systems healthy — vault operating normally.”**
 
 ---
 
+## System Flow
+
+```
+User
+  ↓
+Vaulta Frontend
+  ↓
+Deposit USDC
+  ↓
+Savings Vault Contract
+  ↓
+Mock Aave Pool (yield generation)
+  ↓
+Vault (user assets + earned yield)
+  ↓
+Withdraw
+  ↓
+User
+```
+
+---
+
+## Automated Risk Monitoring Flow
+
+```
+Chainlink Price Feed
+        ↓
+AutomationExecutor Contract
+        ↓
+Checks Stablecoin Price
+        ↓
+If price < safety threshold
+        ↓
+Vault.pause()
+
+If price recovers
+        ↓
+Vault.unpause()
+```
+---
+##Link for the demo is here https://drive.google.com/file/d/1eRmtu5xypaNHxIffm9VUbcI8mIzI939f/view?usp=sharing
 ## Tech Stack
 
 * Solidity smart contracts
