@@ -5,6 +5,15 @@
 
 **Vaulta** is an automated DeFi savings vault that monitors stablecoin risks and protects user funds. Using **Chainlink CRE**, it automatically pauses the vault if risky conditions occur, while earning yield in an Aave-like pool.
 
+## Key Features
+
+- **Automated Risk Protection** – Vault automatically pauses when stablecoin risk conditions are detected.
+- **Chainlink Price Feeds** – Real-time USDC/USD monitoring for reliable risk detection.
+- **Chainlink CRE Automation** – Off-chain workflow that triggers vault pause/unpause actions.
+- **Yield Generation** – Deposited assets are allocated to an Aave-like liquidity pool to earn yield.
+- **User-Friendly Interface** – Simple deposit, monitoring, and withdrawal through a web dashboard.
+- **Secure Smart Contracts** – Built with Solidity and deployed on Base Sepolia.
+
 ---
 
 ## Problem
@@ -136,6 +145,7 @@ Vault.unpause()
 ```
 
 ---
+---
 
 ## Tech Stack
 
@@ -144,6 +154,20 @@ Vault.unpause()
 * Next.js + React frontend
 * viem + Coinbase OnchainKit wallet
 * Base Sepolia testnet
+
+---
+# Vision
+
+Vaulta is designed as the foundation for a safer, automated DeFi savings protocol. While the current implementation demonstrates automated risk protection using Chainlink, the long-term vision expands significantly.
+
+Future development plans include:
+
+- **Integration with live liquidity protocols** such as Aave to allow users to earn real yield from their deposits.
+- **Borrowing functionality**, enabling users to borrow against their deposited assets while maintaining automated risk protection.
+- **Multi-asset support**, expanding beyond USDC to include stablecoins such as **DAI**, **cUSD**, and other major assets.
+- **Multi-chain support**, allowing Vaulta to operate across multiple blockchain ecosystems to increase accessibility and liquidity.
+
+By combining automated risk monitoring with yield generation and cross-chain access, Vaulta aims to become a **self-protecting DeFi savings infrastructure for the next generation of decentralized finance.**
 
 ---
 
