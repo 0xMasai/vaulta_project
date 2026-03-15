@@ -158,13 +158,15 @@ Vault.unpause()
 ---
 # Vision
 
-Vaulta is designed as the foundation for a safer, automated DeFi savings protocol. While the current implementation demonstrates automated risk protection using Chainlink, the long-term vision expands significantly. Future development plans include:
-	*	Integration with live liquidity protocols such as Aave to allow users to earn real yield from their deposits.
-	*	AI agent integration to autonomously optimize yield and manage risk, making deposits self-protecting and maximizing user returns.
-	*	Multi-asset & multi-chain support, expanding beyond USDC to include other stablecoins such as DAI, cUSD, and enabling Vaulta to operate across multiple blockchain ecosystems.
-	*	Borrowing functionality, enabling users to borrow against their deposited assets while maintaining automated risk protection.	
-	* On-ramp and off-ramp features, simplifying real-world adoption by allowing users to easily deposit and withdraw fiat or crypto.	
-	*	Simplified onboarding for mass adoption, including phone number or social logins with account abstraction, so users don’t need crypto wallets to start using Vaulta.
+Vaulta is designed as the foundation for a safer, automated DeFi savings protocol. While the current implementation demonstrates automated risk protection using Chainlink, the long-term vision expands significantly.
+
+Future development plans include:
+	•	Integration with live liquidity protocols such as Aave to allow users to earn real yield from their deposits.
+	•	AI agent integration to autonomously optimize yield and manage risk, making deposits self-protecting and maximizing user returns.
+	•	Multi-asset & multi-chain support, expanding beyond USDC to include other stablecoins such as DAI and cUSD, and enabling Vaulta to operate across multiple blockchain ecosystems.
+	•	Borrowing functionality, enabling users to borrow against their deposited assets while maintaining automated risk protection.
+	•	On-ramp and off-ramp features, simplifying real-world adoption by allowing users to easily deposit and withdraw fiat or crypto.
+	•	Simplified onboarding for mass adoption, including phone number or social logins with account abstraction, so users don’t need crypto wallets to start using Vaulta.
 
 By combining automated risk monitoring with AI-driven yield optimization, cross-chain access, borrowing capabilities, and easy onboarding for all users, Vaulta aims to become a self-protecting, next-generation DeFi savings infrastructure accessible to everyone.
 	
