@@ -167,6 +167,8 @@ Vaulta is designed as the foundation for a safer, automated DeFi savings protoco
 	•	Simplified onboarding for mass adoption, including phone number or social logins with account abstraction, so users don’t need crypto wallets to start using Vaulta.
 
 By combining automated risk monitoring with AI-driven yield optimization, cross-chain access, borrowing capabilities, and easy onboarding for all users, Vaulta aims to become a self-protecting, next-generation DeFi savings infrastructure accessible to everyone.
+	
+
 ---
 
 ## Usage Guidelines
